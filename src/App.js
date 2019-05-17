@@ -1,4 +1,6 @@
 import { getStatusBarHeight } from "react-native-status-bar-height";
+import { ThemeProvider } from "react-native-elements";
+
 import React from "react";
 import {
   Platform,
@@ -19,16 +21,15 @@ import appStore from "./stores/appStore";
 class App extends React.Component {
   render() {
     return (
-      <Provider store={appStore}>
-        {/* <View style={styles.container}> */}
-        {/* <RootStackNavigator /> */}
-        <Router />
-        {/* <View> ggg </View> */}
-      </Provider>
+      <ThemeProvider>
+        <Provider store={appStore}>
+          <Router />
+        </Provider>
+      </ThemeProvider>
     );
   }
 }
-
+        // {/* <View style={styles.container}> */} {/* <RootStackNavigator /> */}
 const styles = StyleSheet.create({
   // container: {
   //   flex: 1,

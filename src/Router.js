@@ -11,13 +11,14 @@ import BottomTabNavigator from "./components/navigation/BottomTabNavigator";
 // import MaterialTopTabNavigator from '../navigation/MaterialTopTabNavigator';
 // import MaterialBottomTabNavigator from '../navigation/MaterialBottomTabNavigator';
 import DrawerNavigator from "./components/navigation/DrawerNavigator";
+import Login from "./components/screen/login";
 // import CustomNavigator from '../navigation/CustomNavigator';
 // import NotFoundScreen from '../screen/NotFound';
 
 @observer
 class RootNavigator extends React.Component {
   state = {
-    initScreen: "BottomTabNavigator"
+    initScreen: "Login"
   };
 
   render() {
@@ -30,6 +31,10 @@ class RootNavigator extends React.Component {
         screen: DrawerNavigator,
         path: "DrawerNavigator"
       },
+      Login:{
+        screen: Login,
+        path: "Login"
+      },
       //   SwitchNavigator: {
       //     screen: SwitchNavigator,
       //   },
@@ -37,7 +42,9 @@ class RootNavigator extends React.Component {
       //     screen: StackNavigator,
       //   },
       BottomTabNavigator: {
-        screen: BottomTabNavigator
+        screen: BottomTabNavigator,
+        path: "Home"
+
       }
       //   MaterialTopTabNavigator: {
       //     screen: MaterialTopTabNavigator,
