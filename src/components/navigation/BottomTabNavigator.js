@@ -4,6 +4,8 @@ import {
   View,
   Image
 } from 'react-native';
+import { Icon } from 'react-native-elements';
+
 import {
   createBottomTabNavigator
 } from 'react-navigation';
@@ -18,11 +20,63 @@ import {
 } from '../../utils/Icons';
 
 const BottomTabNavigator = createBottomTabNavigator({
-  ListUser,
-  Screen2,
-  Screen3,
-  Screen4,
+  ListUser:{
+    screen:ListUser,
+    path:'/list-user',
+    navigationOptions: {
+      tabBarLabel: 'List user',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Icon
+          name={focused ? 'emoticon-cool' : 'emoticon-neutral'}
+          size={30}
+          type="material-community"
+          color={tintColor}
+        />
+      ),
+    },
+  },
+  Screen2:{
+    screen: Screen2,
+    path: '/lists',
+    navigationOptions: {
+      tabBarLabel: 'Lists',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Icon name="list" size={30} type="entypo" color={tintColor} />
+      ),
+    },
+  },
+  Screen3:{
+    screen: Screen3,
+      path: '/input',
+      navigationOptions: {
+        tabBarLabel: 'Input',
+        tabBarIcon: ({ tintColor, focused }) => (
+          <Icon
+            name="wpforms"
+            size={30}
+            type="font-awesome"
+            color={tintColor}
+          />
+        ),
+      },
+  },
+  Screen4:{
+    screen: Screen4,
+    path: '/fonts',
+    navigationOptions: {
+      tabBarLabel: 'Fonts',
+      tabBarIcon: ({ tintColor, focused }) => (
+        <Icon
+          name={focused ? 'font' : 'font'}
+          size={30}
+          type="font-awesome"
+          color={tintColor}
+        />
+      ),
+    },
+  },
 }, {
+  
   defaultNavigationOptions: ({
     navigation
   }) => ({

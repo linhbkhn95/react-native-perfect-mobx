@@ -1,19 +1,24 @@
 import React from "react";
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import { observer } from "mobx-react/native";
+import {
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
+import {
+  observer
+} from "mobx-react/native";
 
 // import appStore from './stores/appStore';
 import NavigationService from "./components/navigation/NavigationService";
 import IntroScreen from "./components/screen/Intro";
-// import SwitchNavigator from '../navigation/SwtichNavigator';
-// import StackNavigator from '../navigation/StackNavigator';
+import SwitchNavigator from './components/navigation/SwtichNavigator';
+import StackNavigator from './components/navigation/StackNavigator';
 import BottomTabNavigator from "./components/navigation/BottomTabNavigator";
-// import MaterialTopTabNavigator from '../navigation/MaterialTopTabNavigator';
-// import MaterialBottomTabNavigator from '../navigation/MaterialBottomTabNavigator';
+import MaterialTopTabNavigator from './components/navigation/MaterialTopTabNavigator';
+import MaterialBottomTabNavigator from './components/navigation/MaterialBottomTabNavigator';
 import DrawerNavigator from "./components/navigation/DrawerNavigator";
 import Login from "./components/screen/login";
-// import CustomNavigator from '../navigation/CustomNavigator';
-// import NotFoundScreen from '../screen/NotFound';
+import CustomNavigator from './components/navigation/CustomNavigator';
+import NotFoundScreen from './components/screen/NotFound';
 
 @observer
 class RootNavigator extends React.Component {
@@ -31,37 +36,37 @@ class RootNavigator extends React.Component {
         screen: DrawerNavigator,
         path: "DrawerNavigator"
       },
-      Login:{
+      Login: {
         screen: Login,
         path: "Login"
       },
-      //   SwitchNavigator: {
-      //     screen: SwitchNavigator,
-      //   },
-      //   StackNavigator: {
-      //     screen: StackNavigator,
-      //   },
+      SwitchNavigator: {
+        screen: SwitchNavigator,
+      },
+      StackNavigator: {
+        screen: StackNavigator,
+      },
       BottomTabNavigator: {
         screen: BottomTabNavigator,
         path: "Home"
 
-      }
-      //   MaterialTopTabNavigator: {
-      //     screen: MaterialTopTabNavigator,
-      //   },
-      //   MaterialBottomTabNavigator: {
-      //     screen: MaterialBottomTabNavigator,
-      //   },
-      //   DrawerNavigator: {
-      //     screen: DrawerNavigator,
-      //   },
-      //   CustomNavigator: {
-      //     screen: CustomNavigator,
-      //   },
-      //   NotFound: {
-      //     screen: NotFoundScreen,
-      //     path: 'NotFound',
-      //   },
+      },
+      MaterialTopTabNavigator: {
+        screen: MaterialTopTabNavigator,
+      },
+      MaterialBottomTabNavigator: {
+        screen: MaterialBottomTabNavigator,
+      },
+      DrawerNavigator: {
+        screen: DrawerNavigator,
+      },
+      CustomNavigator: {
+        screen: CustomNavigator,
+      },
+      NotFound: {
+        screen: NotFoundScreen,
+        path: 'NotFound',
+      },
     };
 
     const navigatorConfig = {
@@ -78,17 +83,19 @@ class RootNavigator extends React.Component {
     );
     const AppContainer = createAppContainer(RootStackNavigator);
 
-    return (
-      <AppContainer
-        ref={v => {
+    return ( <
+      AppContainer ref = {
+        v => {
           if (v) {
             NavigationService.setTopLevelNavigator(v);
           }
-        }}
-        uriPrefix="/"
-      >
-        <RootStackNavigator />
-      </AppContainer>
+        }
+      }
+      uriPrefix = "/" >
+      <
+      RootStackNavigator / >
+      <
+      /AppContainer>
     );
   }
 }

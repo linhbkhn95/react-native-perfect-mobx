@@ -30,7 +30,7 @@ class Login extends Component<Props, State> {
     }
   };
   onPress = () => {
-    this.props.navigation.navigate("Intro");
+    this.props.navigation.navigate("BottomTabNavigator");
   };
   render() {
     return (

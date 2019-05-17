@@ -1,6 +1,15 @@
 import React from "react";
-import { FlatList, View, TouchableOpacity, Text, Image } from "react-native";
+import {
+  FlatList,
+  ScrollView,
+  View,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Image
+} from "react-native";
 // import { getAssetByFilename } from "./Asset";
+import { Card, ListItem, Button, Icon } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default class FriendListScreen extends React.Component {
@@ -32,52 +41,106 @@ export default class FriendListScreen extends React.Component {
     super();
 
     this.state = {
-      friends: [
-        { id: "0", name: "Linhtd", photoFilename: "linhtd.jpg" },
-        { id: "1", name: "Xuan Nguyen", photoFilename: "taotuan.jpeg" },
-        { id: "2", name: "Ronaldo", photoFilename: "pic3.jpg" },
-        { id: "3", name: "Messi", photoFilename: "pic4.jpg" }
+      data: [
+        {
+          id: "0",
+          subContent:
+            "Juventus vừa chính thức xác nhận Max Allegri sẽ rời CLB sau khi mùa giải 2018/19 kết thúc.",
+          title:
+            'Juventus chính thức thay "tướng": Vì Ronaldo & tham vọng xưng vương châu Âu',
+          cover_image:
+            "https://cdn.24h.com.vn/upload/2-2019/images/2019-05-17/120x90/2-640-1558096056-125-width640height480.jpg"
+        },
+        {
+          id: "0",
+          subContent:
+            "JChuyên gia nghiên cứu về hoa cây cảnh Việt Nam vừa có chia sẻ liên quan đến việc nhóm người ở Hà Tĩnh và Thái Bình đến...",
+          title: " Bỏ 3,5 tỷ đồng mua 2 cây lan là rất liều",
+          cover_image:
+            "https://cdn.24h.com.vn/upload/2-2019/images/2019-05-17/120x90/1558092446-85-155807720787920-thumbnail.jpg"
+        }
+
+        // {
+        //   id: "1",
+        //   name: "Xuan Nguyen",
+        //   photoFilename: "taotuan.jpeg"
+        // },
+        // {
+        //   id: "2",
+        //   name: "Ronaldo",
+        //   photoFilename: "pic3.jpg"
+        // },
+        // {
+        //   id: "3",
+        //   name: "Messi",
+        //   photoFilename: "pic4.jpg"
+        // }
       ]
     };
   }
 
   render() {
     return (
-      <FlatList
-        data={this.state.friends}
-        keyExtractor={item => item.id}
-        renderItem={item => (
-          <TouchableOpacity
-            onPress={() =>
-              this.props.navigation.navigate("Intro", {
-                imageFilename: item.item.photoFilename
-              })
-            }
-            style={{
-              width: "100%",
-              height: 70,
-              flexDirection: "row",
-              paddingHorizontal: 20,
-              borderBottomWidth: 1,
-              borderColor: "#0002"
-            }}
-          >
-            <Image
-              style={{
-                alignSelf: "center",
-                resizeMode: "cover",
-                width: 50,
-                height: 50,
-                borderRadius: 25
-              }}
-              source={require("../../../assets/icons/mask.png")}
-            />
-            <Text style={{ alignSelf: "center", marginLeft: 10 }}>
-              {item.item.name}
-            </Text>
-          </TouchableOpacity>
-        )}
-      />
+      // <FlatList
+      //   data={this.state.friends}
+      //   keyExtractor={item => item.id}
+      //   renderItem={item => (
+      //     <TouchableOpacity
+      //       onPress={() =>
+      //         this.props.navigation.navigate("Intro", {
+      //           imageFilename: item.item.photoFilename
+      //         })
+      //       }
+      //       style={{
+      //         width: "100%",
+      //         height: 70,
+      //         flexDirection: "row",
+      //         paddingHorizontal: 20,
+      //         borderBottomWidth: 1,
+      //         borderColor: "#0002"
+      //       }}
+      //     >
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        {this.state.data.map(item => {
+          return (
+            <View>
+              <Card
+                title={item.title}
+                image={{
+                  uri: item.cover_image
+                }}
+              >
+                <Text
+                  style={{
+                    marginBottom: 10
+                  }}
+                >
+                  {item.subContent}
+                </Text>
+                <Button
+                  icon={<Icon name="visibility" color="#ffffff" />}
+                  backgroundColor="#03A9F4"
+                  buttonStyle={{
+                    borderRadius: 0,
+                    marginLeft: 0,
+                    marginRight: 0,
+                    marginBottom: 0
+                  }}
+                  title="xem chi tiết"
+                />
+              </Card>
+            </View>
+          );
+        })}
+      </ScrollView>
+      //  </TouchableOpacity>
+      // )}
+      ///>
     );
   }
 }
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingVertical: 20
+  }
+});
