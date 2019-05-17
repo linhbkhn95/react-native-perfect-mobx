@@ -13,29 +13,38 @@ import { Card, ListItem, Button, Icon } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default class FriendListScreen extends React.Component {
-  static navigationOptions = props => ({
-    title: "Friends List",
+  static navigationOptions = {
+    // header: null,
+
+    title: "Noi bat",
+    headerStyle: {
+      backgroundColor: "black"
+    },
+    headerTintColor: "#ffff",
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
     // tabBarIcon: ({ tintColor }) => (
     //   <Image
     //     style={{ width: 40, height: 40, tintColor: tintColor }}
     //     source={require("../../../assets/icons/mask.png")}
     //   />
     // )
-    tabBarIcon: ({ focused, tintColor }) => {
-      // const { routeName } = navigation.state;
-      const routeName = "Home";
-      let iconName;
-      if (routeName === "Home") {
-        iconName = `ios-information-circle${focused ? "" : "-outline"}`;
-      } else if (routeName === "Settings") {
-        iconName = `ios-options${focused ? "" : "-outline"}`;
-      }
+    // tabBarIcon: ({ focused, tintColor }) => {
+    //   // const { routeName } = navigation.state;
+    //   const routeName = "Home";
+    //   let iconName;
+    //   if (routeName === "Home") {
+    //     iconName = `ios-information-circle${focused ? "" : "-outline"}`;
+    //   } else if (routeName === "Settings") {
+    //     iconName = `ios-options${focused ? "" : "-outline"}`;
+    //   }
 
-      // You can return any component that you like here! We usually use an
-      // icon component from react-native-vector-icons
-      return <Ionicons name={iconName} size={25} color={tintColor} />;
-    }
-  });
+    //   // You can return any component that you like here! We usually use an
+    //   // icon component from react-native-vector-icons
+    //   return <Ionicons name={iconName} size={25} color={tintColor} />;
+    // }
+  };
 
   constructor() {
     super();
@@ -100,39 +109,41 @@ export default class FriendListScreen extends React.Component {
       //         borderColor: "#0002"
       //       }}
       //     >
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        {this.state.data.map(item => {
-          return (
-            <View>
-              <Card
-                title={item.title}
-                image={{
-                  uri: item.cover_image
-                }}
-              >
-                <Text
-                  style={{
-                    marginBottom: 10
+      <View style={styles.container}>
+3          {this.state.data.map((item, index) => {
+            return (
+              <View key={index}>
+                <Card
+                  title={item.title}
+                  image={{
+                    uri: item.cover_image
                   }}
                 >
-                  {item.subContent}
-                </Text>
-                <Button
-                  icon={<Icon name="visibility" color="#ffffff" />}
-                  backgroundColor="#03A9F4"
-                  buttonStyle={{
-                    borderRadius: 0,
-                    marginLeft: 0,
-                    marginRight: 0,
-                    marginBottom: 0
-                  }}
-                  title="xem chi tiết"
-                />
-              </Card>
-            </View>
-          );
-        })}
-      </ScrollView>
+                  <Text
+                    style={{
+                      marginBottom: 10
+                    }}
+                  >
+                    {item.subContent}
+                  </Text>
+                  <Button
+                    icon={<Icon name="visibility" color="#ffffff" />}
+                    backgroundColor="#03A9F4"
+                    buttonStyle={{
+                      borderRadius: 0,
+                      marginLeft: 0,
+                      marginRight: 0,
+                      marginBottom: 0
+                    }}
+                    title="xem chi tiết"
+                  />
+                </Card>
+              </View>
+            );
+          })}
+        </ScrollView>
+      </View>
+
       //  </TouchableOpacity>
       // )}
       ///>
@@ -140,6 +151,9 @@ export default class FriendListScreen extends React.Component {
   }
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   contentContainer: {
     paddingVertical: 20
   }
