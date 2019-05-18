@@ -110,7 +110,8 @@ export default class FriendListScreen extends React.Component {
       //       }}
       //     >
       <View style={styles.container}>
-3          {this.state.data.map((item, index) => {
+        <ScrollView contentContainerStyle={styles.contentContainer}>
+          {this.state.data.map((item, index) => {
             return (
               <View key={index}>
                 <Card

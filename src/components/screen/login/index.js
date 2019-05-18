@@ -64,7 +64,6 @@ class Login extends Component<Props, State> {
             }
           /> */}
           <Input
-            placeholder="username"
             keyboardAppearance="light"
             autoFocus={false}
             autoCapitalize="none"
@@ -96,10 +95,9 @@ class Login extends Component<Props, State> {
             autoCapitalize="none"
             autoCorrect={false}
             placeholderTextColor="#7384B4"
-            keyboardType="email-address"
+            // keyboardType="password"
             returnKeyType="next"
             inputStyle={{ marginLeft: 10, color: "white" }}
-            placeholder={"Email"}
             containerStyle={{
               borderBottomColor: "rgba(0, 0, 0, 0.38)",
               marginBottom: 15
